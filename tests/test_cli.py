@@ -117,3 +117,29 @@ def test_version(capsys):
     assert exc_info.value.code == 0
     captured = capsys.readouterr()
     assert captured.out == f"mdformat {mdformat.__version__}\n"
+
+
+def test_no_wrap(tmp_path):
+    file_path = tmp_path / "test_markdown.md"
+    file_path.write_text(
+        """\
+all
+these newlines
+should be
+removed because they are
+in the same paragraph
+
+This however is the next
+paragraph.   Whitespace should be collapsed
+   \t here
+"""
+    )
+    assert run([str(file_path), "--wrap=no"]) == 0
+    assert (
+        file_path.read_text()
+        == """\
+all these newlines should be removed because they are in the same paragraph
+
+This however is the next paragraph. Whitespace should be collapsed here
+"""
+    )

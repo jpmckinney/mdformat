@@ -140,6 +140,9 @@ def ordered_list_close(
 def paragraph_close(
     text: str, tokens: Sequence[Token], idx: int, options: Mapping[str, Any], env: dict
 ) -> str:
+    if options.get("mdformat", {}).get("wrap", "keep") == "no":
+        text = re.sub(r"\s+", " ", text)
+
     lines = text.split("\n")
 
     # Replace line starting tabs with numeric decimal representation.
