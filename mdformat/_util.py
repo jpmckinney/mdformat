@@ -58,7 +58,7 @@ def is_md_equal(
         for codeclass in codeformatters:
             html = re.sub(
                 f'<code class="language-{codeclass}">.*</code>',
-                " ",
+                "",
                 html,
                 flags=re.DOTALL,
             )
