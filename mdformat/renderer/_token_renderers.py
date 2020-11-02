@@ -162,7 +162,7 @@ def html_inline(
 def hardbreak(
     tokens: Sequence[Token], idx: int, options: Mapping[str, Any], env: dict
 ) -> str:
-    return "\\" + "\n"
+    return MARKERS.HARD_BREAK
 
 
 def softbreak(
