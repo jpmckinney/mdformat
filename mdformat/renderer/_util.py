@@ -67,6 +67,7 @@ class MARKERS:
     #   - the root document
     BLOCK_SEPARATOR = _autovalue()
     HARD_BREAK = _autovalue()
+    FORCE_SPACE = _autovalue()
 
 
 def index_opening_token(tokens: Sequence[Token], closing_token_idx: int) -> int:

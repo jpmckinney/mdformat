@@ -102,7 +102,7 @@ def code_inline(
     if not longest_backtick_seq or all_chars_are_whitespace:
         return f"`{code}`"
     separator = "`" * (longest_backtick_seq + 1)
-    return f"{separator} {code} {separator}"
+    return f"{separator}{MARKERS.FORCE_SPACE}{code}{MARKERS.FORCE_SPACE}{separator}"
 
 
 def fence(

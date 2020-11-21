@@ -143,6 +143,7 @@ def paragraph_close(
     if options.get("mdformat", {}).get("wrap", "keep") == "no":
         text = re.sub(r"\s+", " ", text)
     text = text.replace(MARKERS.HARD_BREAK, "\\" + "\n")
+    text = text.replace(MARKERS.FORCE_SPACE, " ")
 
     lines = text.split("\n")
 
@@ -170,6 +171,7 @@ def paragraph_close(
     ]
 
     text = "\n".join(lines)
+    text = text.strip()
 
     return text + MARKERS.BLOCK_SEPARATOR
 
