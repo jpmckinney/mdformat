@@ -81,7 +81,7 @@ def test_commonmark_spec(wrap, number, entry):
     1. Markdown AST is the same before and after 1 pass of formatting
     2. Markdown after 1st pass and 2nd pass of formatting are equal
     """
-    options = {"wrap: wrap, "number": number}
+    options = {"wrap": wrap, "number": number}
     md_original = entry["md"]
     md_new = mdformat.text(md_original, options=options)
     md_2nd_pass = mdformat.text(md_new, options=options)
